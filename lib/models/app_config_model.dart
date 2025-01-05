@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'dart:ui';
 
 class AppConfigModel {
   String appName;
-  String mainColor;
+  Color mainColor;
 
   AppConfigModel({
     required this.appName,
@@ -16,11 +17,11 @@ class AppConfigModel {
 
   factory AppConfigModel.fromJson(Map<String, dynamic> json) => AppConfigModel(
         appName: json["appName"],
-        mainColor: json["mainColor"],
+        mainColor: Color(int.parse(json["mainColor"])),
       );
 
   Map<String, dynamic> toJson() => {
         "appName": appName,
-        "mainColor": mainColor,
+        "mainColor": mainColor.toString(),
       };
 }
