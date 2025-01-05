@@ -5,6 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:playground_flutter/app/app_router.dart';
 import 'package:playground_flutter/app/app_theme.dart';
 import 'package:playground_flutter/app/cubit/app_cubit.dart';
+import 'package:playground_flutter/utilities/general_widgets/app_loading.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -21,7 +22,7 @@ class MainApp extends StatelessWidget {
                 context.read<AppCubit>().getAppConfig();
                 FlutterNativeSplash.remove();
               });
-              return CircularProgressIndicator();
+              return AppLoading();
             case AppStatus.appLoaded:
               return MaterialApp.router(
                 title: state.appConfig?.appName,
