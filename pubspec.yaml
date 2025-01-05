@@ -17,6 +17,7 @@ dependencies:
   firebase_analytics: ^11.3.6
   go_router: ^14.6.2
   flutter_native_splash: ^2.4.4
+  intl: ^0.20.1
 
 dev_dependencies:
   flutter_test:
@@ -28,4 +29,7 @@ flutter:
   assets:
     - assets/
 
+flutter_intl:
+  enabled: true
+  output_dir: lib/l10n/generated
 
