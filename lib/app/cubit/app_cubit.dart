@@ -16,13 +16,12 @@ class AppCubit extends Cubit<AppState> {
       minimumFetchInterval: const Duration(hours: 1),
     ));
     await remoteConfig.fetchAndActivate();
-    String appName = remoteConfig.getString('appConfig');
+    AppConfigModel appConfig =
+        AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
 
-    print(appName);
-
-    // emit(state.copyWith(
-    //     status: AppStatus.appLoaded,
-    //     appConfig: AppConfigModel(
-    //         appName: 'Playground Flutter', mainColor: '#FF0000')));
+    emit(state.copyWith(
+      status: AppStatus.appLoaded,
+      appConfig: appConfig,
+    ));
   }
 }

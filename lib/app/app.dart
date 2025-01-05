@@ -24,8 +24,14 @@ class MainApp extends StatelessWidget {
             case AppStatus.appLoaded:
               return MaterialApp.router(
                 title: state.appConfig?.appName,
-                theme: AppTheme.appTheme(Colors.blue, Brightness.light),
-                darkTheme: AppTheme.appTheme(Colors.blue, Brightness.dark),
+                theme: AppTheme.appTheme(
+                  state.appConfig!.mainColor,
+                  Brightness.light,
+                ),
+                darkTheme: AppTheme.appTheme(
+                  state.appConfig!.mainColor,
+                  Brightness.dark,
+                ),
                 themeMode: ThemeMode.system,
                 routerConfig: AppRouter.router,
               );
