@@ -25,3 +25,6 @@ class AppCubit extends Cubit<AppState> {
     ));
   }
 }
+
+//  _log.warning("Could not get AppConfig data, setting default.", e);
+//  emit(state.copyWith(status: AppStatus.loaded));
