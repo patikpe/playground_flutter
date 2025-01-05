@@ -16,7 +16,7 @@ dependencies:
   firebase_remote_config: ^5.2.0
   firebase_analytics: ^11.3.6
   go_router: ^14.6.2
- 
+  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +25,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+
+
