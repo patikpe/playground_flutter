@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -18,7 +20,10 @@ class AppCubit extends Cubit<AppState> {
     await remoteConfig.fetchAndActivate();
     AppConfigModel appConfig =
         AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
+    print(Platform.localeName);
 
+    String test = remoteConfig.getString(appConfig.supportedLocales.first);
+    print(test);
     emit(state.copyWith(
       status: AppStatus.appLoaded,
       appConfig: appConfig,
