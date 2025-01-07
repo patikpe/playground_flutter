@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/material.dart';
 import 'package:playground_flutter/models/app_config_model.dart';
 
 part 'app_state.dart';
@@ -27,6 +28,13 @@ class AppCubit extends Cubit<AppState> {
     emit(state.copyWith(
       status: AppStatus.appLoaded,
       appConfig: appConfig,
+    ));
+  }
+
+  changeTheme(ThemeMode themeMode) {
+    emit(state.copyWith(
+      status: AppStatus.appLoaded,
+      themeMode: themeMode,
     ));
   }
 }
