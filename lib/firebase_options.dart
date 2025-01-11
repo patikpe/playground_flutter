@@ -47,6 +47,7 @@ class DefaultFirebaseOptions {
     projectId: 'playground-dev-firebase',
     authDomain: 'playground-dev-firebase.firebaseapp.com',
     storageBucket: 'playground-dev-firebase.firebasestorage.app',
+    measurementId: 'G-9PBMH18CKQ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -82,6 +83,7 @@ class DefaultFirebaseOptions {
     projectId: 'playground-dev-firebase',
     authDomain: 'playground-dev-firebase.firebaseapp.com',
     storageBucket: 'playground-dev-firebase.firebasestorage.app',
+    measurementId: 'G-NYK1EDSWTZ',
   );
 
 }

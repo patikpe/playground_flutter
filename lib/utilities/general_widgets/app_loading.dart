@@ -9,7 +9,7 @@ class AppLoading extends StatelessWidget {
       child: Column(
         children: [
           Image(
-            image: AssetImage('assets/splash_screen.png'),
+            image: AssetImage('assets/main_icon.png'),
           ),
           CircularProgressIndicator(),
         ],

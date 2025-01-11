@@ -11,18 +11,18 @@ class AppCubit extends Cubit<AppState> {
   final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
 
   getAppConfig() async {
-    // await remoteConfig.setConfigSettings(RemoteConfigSettings(
-    //   fetchTimeout: const Duration(minutes: 1),
-    //   minimumFetchInterval: const Duration(hours: 1),
-    // ));
-    // await remoteConfig.fetchAndActivate();
-    // AppConfigModel appConfig =
-    //     AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
+    await remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(minutes: 1),
+      minimumFetchInterval: const Duration(hours: 1),
+    ));
+    await remoteConfig.fetchAndActivate();
+    AppConfigModel appConfig =
+        AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
 
-    // emit(state.copyWith(
-    //   status: AppStatus.appLoaded,
-    //   appConfig: appConfig,
-    // ));
+    emit(state.copyWith(
+      status: AppStatus.appLoaded,
+      appConfig: appConfig,
+    ));
   }
 }
 
