@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
             case AppStatus.appInitial:
               SchedulerBinding.instance.addPostFrameCallback((_) {
                 context.read<AppCubit>().getAppConfig();
-                FlutterNativeSplash.remove();
+                // FlutterNativeSplash.remove();
               });
               return AppLoading();
             case AppStatus.appLoaded:
