@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:playground_flutter/app/app_router.dart';
 import 'package:playground_flutter/app/app_theme.dart';
 import 'package:playground_flutter/app/cubit/app_cubit.dart';
@@ -21,7 +20,6 @@ class MainApp extends StatelessWidget {
             case AppStatus.appInitial:
               SchedulerBinding.instance.addPostFrameCallback((_) {
                 context.read<AppCubit>().getAppConfig();
-                FlutterNativeSplash.remove();
               });
               return AppLoading();
             case AppStatus.appLoaded:
