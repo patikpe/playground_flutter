@@ -4,7 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/models/app_config_model.dart';
+import 'package:playground_flutter/app/app_dependacy.dart';
+import 'package:playground_flutter/managers/app_locale/app_locale.dart';
+import 'package:playground_flutter/models/app_config/app_config_model.dart';
 
 part 'app_state.dart';
 
@@ -12,6 +14,8 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppState());
 
   final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+
+  AppLocale appLocale = appDependency<AppLocale>();
 
   getAppConfig() async {
     await remoteConfig.setConfigSettings(RemoteConfigSettings(
@@ -22,6 +26,8 @@ class AppCubit extends Cubit<AppState> {
     AppConfigModel appConfig =
         AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
     print(Platform.localeName);
+
+    appLocale.printStuff();
 
     String test = remoteConfig.getString(appConfig.supportedLocales.first);
     print(test);
