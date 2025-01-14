@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:playground_flutter/app/app_router.dart';
+import 'package:playground_flutter/managers/app_management/app_router.dart';
 import 'package:playground_flutter/app/app_theme.dart';
 import 'package:playground_flutter/app/cubit/app_cubit.dart';
 import 'package:playground_flutter/utilities/general_widgets/app_loading.dart';
