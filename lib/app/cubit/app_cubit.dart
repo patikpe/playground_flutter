@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -25,12 +25,8 @@ class AppCubit extends Cubit<AppState> {
     await remoteConfig.fetchAndActivate();
     AppConfigModel appConfig =
         AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
-    print(Platform.localeName);
-
-    appLocale.printStuff();
-
-    String test = remoteConfig.getString(appConfig.supportedLocales.first);
-    print(test);
+    String locales = remoteConfig.getString(appConfig.supportedLocales.first);
+    appLocale.locale = json.decode(locales);
     emit(state.copyWith(
       status: AppStatus.appLoaded,
       appConfig: appConfig,

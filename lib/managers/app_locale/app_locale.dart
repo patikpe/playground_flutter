@@ -1,7 +1,7 @@
 class AppLocale {
-  // Map<String, String> localeStrings;
+  Map<String, dynamic> localeStrings = {};
 
-  printStuff() {
-    print('This is a translation');
+  set locale(Map<String, dynamic> value) {
+    localeStrings = value;
   }
 }

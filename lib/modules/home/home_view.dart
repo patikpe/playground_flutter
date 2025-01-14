@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('test_app_bar_title'.tr),
+        title: Text('app_name'.translate),
       ),
       drawer: Drawer(
         child: ListView(
