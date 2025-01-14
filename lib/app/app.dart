@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,8 +33,18 @@ class MainApp extends StatelessWidget {
                   state.appConfig!.mainColor,
                   Brightness.dark,
                 ),
-                themeMode: ThemeMode.system,
+                themeMode: state.themeMode,
                 routerConfig: AppRouter.router,
+                localizationsDelegates: [
+                  DefaultMaterialLocalizations.delegate,
+                  DefaultCupertinoLocalizations.delegate,
+                  DefaultWidgetsLocalizations.delegate,
+                ],
+                supportedLocales:
+                    state.appConfig!.supportedLocales.map((locale) {
+                  var split = locale.split('_');
+                  return Locale(split[0].trim(), split[1].trim());
+                }).toList(),
               );
           }
         },
