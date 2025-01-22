@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:playground_flutter/managers/app_locale/string_translation.dart';
 import 'package:playground_flutter/modules/app/cubit/app_cubit.dart';
 
 class SettingsView extends StatelessWidget {
@@ -11,22 +12,22 @@ class SettingsView extends StatelessWidget {
       appBar: AppBar(
         leading: BackButton(),
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('test_settings_app_bar_title'),
+        title: Text('app_name'.translate),
       ),
       body: Center(
         child: DropdownMenu(
           initialSelection: context.read<AppCubit>().state.themeMode,
           dropdownMenuEntries: [
             DropdownMenuEntry(
-              label: 'test_dropdown_system',
+              label: 'default'.translate,
               value: ThemeMode.system,
             ),
             DropdownMenuEntry(
-              label: 'test_dropdown_light',
+              label: 'light'.translate,
               value: ThemeMode.light,
             ),
             DropdownMenuEntry(
-              label: 'test_dropdown_dark',
+              label: 'dark'.translate,
               value: ThemeMode.dark,
             ),
           ],
