@@ -30,21 +30,19 @@ class LocalDatabase {
     );
   }
 
-  // create(String key) {
-  //   return _store.record(key);
-  // }
+  Future<bool> recordExistsAndNotEmpty(String key) async =>
+      (await _store.record(key).exists(_db) &&
+          await _store.record(key).get(_db) != null);
 
-  // Future<Object?> delete(String key) async {
-  //   return await _store.record(key).delete(_db);
-  // }
+  Future<Object?> delete(String key) async =>
+      await _store.record(key).delete(_db);
 
-  Future<Map<String, dynamic>> get(String key) async {
-    return await _store.record(key).get(_db) as Map<String, dynamic>;
-  }
+  Future<Map<String, dynamic>> get(String key) async =>
+      await _store.record(key).get(_db) as Map<String, dynamic>;
 
-  Future<void> update(String key, Map<String, dynamic> data) {
-    return _store.record(key).put(_db, data);
-  }
+  Future<Map<String, dynamic>> update(
+          String key, Map<String, dynamic> data) async =>
+      await _store.record(key).put(_db, data) as Map<String, dynamic>;
 }
 
 class MyAsyncCodec extends AsyncContentCodecBase {

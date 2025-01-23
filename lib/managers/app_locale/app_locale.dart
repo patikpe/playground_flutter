@@ -8,19 +8,26 @@ import 'package:playground_flutter/managers/app_management/app_dependency.dart';
 class AppLocale {
   Map<String, dynamic> localeStrings = {};
 
-  Future<void> changeLocale(String localeCode) async {
-    localeStrings = await appDependency<LocalDatabase>().get(localeCode);
-  }
-
-  Future<void> getInitialDeviceLocale(List<String> supportedLocales) async {
+  Future<void> getStartUpDeviceLocale(List<String> supportedLocales) async {
     String defaultLocale = Platform.localeName;
     if (!supportedLocales.contains(defaultLocale)) {
       defaultLocale = 'en_US';
     }
-    String locales = FirebaseRemoteConfig.instance.getString(defaultLocale);
-    localeStrings = json.decode(locales);
-    await appDependency<LocalDatabase>().update(defaultLocale, localeStrings);
+    localeStrings = await _getRemoteLocale(defaultLocale);
   }
 
-  downloadMissingLocalesOnBackground(List<String> supportedLocales) {}
+  Future<void> changeLocale(String localeCode) async {
+    localeStrings = await _getRemoteLocale(localeCode);
+  }
+
+  Future<Map<String, dynamic>> _getRemoteLocale(String localeCode) async {
+    if (await appDependency<LocalDatabase>()
+        .recordExistsAndNotEmpty(localeCode)) {
+      return await appDependency<LocalDatabase>().get(localeCode);
+    } else {
+      String locales = FirebaseRemoteConfig.instance.getString(localeCode);
+      return await appDependency<LocalDatabase>()
+          .update(localeCode, json.decode(locales));
+    }
+  }
 }

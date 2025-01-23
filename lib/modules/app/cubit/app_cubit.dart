@@ -21,12 +21,9 @@ class AppCubit extends Cubit<AppState> {
       minimumFetchInterval: const Duration(hours: 1),
     ));
     await remoteConfig.fetchAndActivate();
-
     AppConfigModel appConfig =
         AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
-
-    await appLocale.getInitialDeviceLocale(appConfig.supportedLocales);
-
+    await appLocale.getStartUpDeviceLocale(appConfig.supportedLocales);
     emit(state.copyWith(
       status: AppStatus.appLoaded,
       appConfig: appConfig,
