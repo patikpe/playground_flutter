@@ -273,10 +273,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "7c2d40b59890a929824f30d442e810116caf5088482629c894b9e4478c67472d"
+      sha256: daf3ff5570f55396b2d2c9bf8136d7db3a8acf208ac0cef92a3ae2beb9a81550
       url: "https://pub.dev"
     source: hosted
-    version: "14.6.3"
+    version: "14.7.1"
   image:
     dependency: transitive
     description:
@@ -489,10 +489,10 @@ packages:
     dependency: "direct main"
     description:
       name: sembast
-      sha256: b3dde17154b2233d039fe3c386871d2ccddb4f31e058502c4036b03858e2ff5f
+      sha256: "6cf9acde19bd88dba9ea8090d3e50725cdc70fc7cf1c117c26e79c257884b04b"
       url: "https://pub.dev"
     source: hosted
-    version: "3.8.1+1"
+    version: "3.8.2"
   sky_engine:
     dependency: transitive
     description: flutter

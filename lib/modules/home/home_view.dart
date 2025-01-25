@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:playground_flutter/managers/app_locale/string_translation.dart';
+import 'package:playground_flutter/managers/app_management/app_locale/string_translation.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
