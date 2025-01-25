@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/managers/app_management/local_database.dart';
+import 'package:playground_flutter/managers/app_management/app_config.dart';
 import 'package:playground_flutter/managers/app_management/app_dependency.dart';
 import 'package:playground_flutter/managers/app_management/app_locale/app_locale.dart';
 import 'package:playground_flutter/models/app_config/app_config_model.dart';
@@ -21,10 +21,7 @@ class AppCubit extends Cubit<AppState> {
     ));
     await remoteConfig.fetchAndActivate();
 
-    AppConfigModel appConfig =
-        AppConfigModel.fromRawJson(remoteConfig.getString('appConfig'));
-    await appDependency<LocalDatabase>()
-        .update('appConfig', appConfig.toJson());
+    AppConfigModel appConfig = await AppConfig.getStartUpAppConfig();
     await appDependency<AppLocale>()
         .getStartUpDeviceLocale(appConfig.supportedLocales);
     emit(state.copyWith(
