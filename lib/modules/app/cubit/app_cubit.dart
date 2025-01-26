@@ -20,10 +20,10 @@ class AppCubit extends Cubit<AppState> {
       minimumFetchInterval: const Duration(hours: 1),
     ));
     await remoteConfig.fetchAndActivate();
-
     AppConfigModel appConfig = await AppConfig.getStartUpAppConfig();
     await appDependency<AppLocale>()
         .getStartUpDeviceLocale(appConfig.supportedLocales);
+    remoteConfigSync();
     emit(state.copyWith(
       status: AppStatus.appLoaded,
       appConfig: appConfig,
@@ -35,6 +35,29 @@ class AppCubit extends Cubit<AppState> {
       status: AppStatus.appLoaded,
       themeMode: themeMode,
     ));
+  }
+
+  remoteConfigSync() async {
+    FirebaseRemoteConfig.instance.onConfigUpdated.listen((event) async {
+      for (String value in event.updatedKeys) {
+        switch (value) {
+          case 'appConfig':
+            AppConfigModel appConfig = await AppConfig.forceAppConfigUpdate();
+            emit(state.copyWith(
+              status: AppStatus.appLoaded,
+              appConfig: appConfig,
+            ));
+          default:
+            // Default case to update locale
+            if (value.contains('_')) {
+              await appDependency<AppLocale>().forceLocaleUpdate(value);
+              emit(state.copyWith(
+                status: AppStatus.appLoaded,
+              ));
+            }
+        }
+      }
+    });
   }
 }
 
