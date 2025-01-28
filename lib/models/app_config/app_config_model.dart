@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:ui';
 
 class AppConfigModel {
   String appName;
-  Color mainColor;
+  String mainColor;
   List<String> supportedLocales;
 
   AppConfigModel({
@@ -19,13 +18,13 @@ class AppConfigModel {
 
   factory AppConfigModel.fromJson(Map<String, dynamic> json) => AppConfigModel(
         appName: json["appName"],
-        mainColor: Color(int.parse(json["mainColor"])),
+        mainColor: json["mainColor"],
         supportedLocales: List<String>.from(json["supportedLocales"]),
       );
 
   Map<String, dynamic> toJson() => {
         "appName": appName,
-        "mainColor": mainColor.toString(),
+        "mainColor": mainColor,
         "supportedLocales": List<dynamic>.from(supportedLocales.map((x) => x)),
       };
 }

@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:playground_flutter/modules/home/home_view.dart';
-import 'package:playground_flutter/modules/settings/settings_view.dart';
+import 'package:playground_flutter/features/home/home_view.dart';
+import 'package:playground_flutter/features/settings/settings_view.dart';
 
 class AppRouter {
   static final router = GoRouter(

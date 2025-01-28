@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:playground_flutter/managers/app_locale/string_translation.dart';
+import 'package:playground_flutter/core/locale/string_translation.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
               ),
               child: Text(
-                'test_drawer_header',
+                'app_name'.translate,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -29,7 +29,7 @@ class HomeView extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('test_settings'),
+              title: Text('settings'.translate),
               onTap: () {
                 context.push('/settings');
               },
@@ -38,7 +38,7 @@ class HomeView extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text('test_center_text'),
+        child: Text('test_label'.translate),
       ),
     );
   }
