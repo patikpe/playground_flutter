@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:playground_flutter/managers/app_management/local_database.dart';
-import 'package:playground_flutter/managers/app_management/app_dependency.dart';
+import 'package:playground_flutter/core/database/local_database.dart';
+import 'package:playground_flutter/core/app_dependency.dart';
 
 class AppLocale {
   Map<String, dynamic> localeStrings = {};

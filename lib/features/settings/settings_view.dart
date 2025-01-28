@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:playground_flutter/managers/app_management/app_locale/string_translation.dart';
-import 'package:playground_flutter/modules/app/cubit/app_cubit.dart';
+import 'package:playground_flutter/core/locale/string_translation.dart';
+import 'package:playground_flutter/features/app/cubit/app_cubit.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});

@@ -1,7 +1,7 @@
 // Dependency Injection
 import 'package:get_it/get_it.dart';
-import 'package:playground_flutter/managers/app_management/app_locale/app_locale.dart';
-import 'package:playground_flutter/managers/app_management/local_database.dart';
+import 'package:playground_flutter/core/locale/app_locale.dart';
+import 'package:playground_flutter/core/database/local_database.dart';
 
 final GetIt appDependency = GetIt.instance;
 
