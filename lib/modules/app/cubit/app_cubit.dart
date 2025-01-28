@@ -37,8 +37,9 @@ class AppCubit extends Cubit<AppState> {
     ));
   }
 
-  remoteConfigSync() async {
-    FirebaseRemoteConfig.instance.onConfigUpdated.listen((event) async {
+  remoteConfigSync() {
+    remoteConfig.onConfigUpdated.listen((event) async {
+      await remoteConfig.fetchAndActivate();
       for (String value in event.updatedKeys) {
         switch (value) {
           case 'appConfig':
