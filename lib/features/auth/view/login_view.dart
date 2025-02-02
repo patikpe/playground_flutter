@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginView extends StatelessWidget {
@@ -7,8 +6,6 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('LoginView');
-
     return TextButton(
       onPressed: () {
         context.push('/register');

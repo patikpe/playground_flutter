@@ -5,7 +5,6 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('RegisterView');
     return const Placeholder();
   }
 }
