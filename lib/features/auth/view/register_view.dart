@@ -12,7 +12,7 @@ class RegisterView extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
           onPressed: () {
-            context.push('/login');
+            context.go('/login');
           },
           child: const Text('Login'),
         );
