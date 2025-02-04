@@ -14,11 +14,11 @@ class AppRouter {
         routes: [
           GoRoute(
             path: '/login',
-            builder: (context, state) => const LoginView(),
+            builder: (context, state) => LoginView(),
           ),
           GoRoute(
             path: '/register',
-            builder: (context, state) => const RegisterView(),
+            builder: (context, state) => RegisterView(),
           ),
         ],
       ),
