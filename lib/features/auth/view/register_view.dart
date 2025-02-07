@@ -1,48 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:playground_flutter/features/auth/cubit/auth_cubit.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterView extends StatelessWidget {
   RegisterView({super.key});
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _formRegister = FormGroup({
+    'email': FormControl<String>(),
+    'password': FormControl<String>(),
+    'confirmPassword': FormControl<String>(),
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener(
+    return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {},
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'Email'),
+      child: Column(
+        children: [
+          ReactiveForm(
+            formGroup: _formRegister,
+            child: Column(
+              children: [
+                ReactiveTextField<String>(
+                  key: const Key('email'),
+                  formControlName: 'email',
+                  decoration: const InputDecoration(
+                    label: Text('Email'),
+                    prefixIcon: Icon(Icons.email),
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(labelText: 'Password'),
+                ),
+                ReactiveTextField<String>(
+                  key: const Key('password'),
+                  formControlName: 'password',
+                  decoration: const InputDecoration(
+                    label: Text('Password'),
+                    prefixIcon: Icon(Icons.password),
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Create Account'),
+                ),
+                ReactiveTextField<String>(
+                  key: const Key('confirmPassword'),
+                  formControlName: 'confirmPassword',
+                  decoration: const InputDecoration(
+                    label: Text('Confirm Password'),
+                    prefixIcon: Icon(Icons.password),
                   ),
-                ],
-              ),
+                ),
+                ReactiveFormConsumer(
+                  key: const Key('submit'),
+                  builder: (context, form, _) => ElevatedButton(
+                    onPressed: () {
+                      context
+                          .read<AuthCubit>()
+                          .signInWithEmailAndPassword(form.value);
+                    },
+                    child: const Text('Submit'),
+                  ),
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                context.go('/login');
-              },
-              child: const Text('I have an account'),
-            ),
-          ],
-        ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.go('/login');
+            },
+            child: const Text('I have an account'),
+          ),
+        ],
       ),
     );
   }
