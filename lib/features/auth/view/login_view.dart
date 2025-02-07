@@ -17,46 +17,60 @@ class LoginView extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {},
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ReactiveForm(
-            formGroup: _formLogin,
-            child: Column(
-              children: [
-                ReactiveTextField<String>(
-                  key: const Key('email'),
-                  formControlName: 'email',
-                  decoration: const InputDecoration(
-                    label: Text('Email'),
-                    prefixIcon: Icon(Icons.email),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ReactiveForm(
+              formGroup: _formLogin,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: ReactiveTextField<String>(
+                      key: const Key('email'),
+                      formControlName: 'email',
+                      decoration: const InputDecoration(
+                        label: Text('Email'),
+                        prefixIcon: Icon(Icons.email),
+                      ),
+                    ),
                   ),
-                ),
-                ReactiveTextField<String>(
-                  key: const Key('password'),
-                  formControlName: 'password',
-                  decoration: const InputDecoration(
-                    label: Text('Password'),
-                    prefixIcon: Icon(Icons.password),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: ReactiveTextField<String>(
+                      key: const Key('password'),
+                      formControlName: 'password',
+                      decoration: const InputDecoration(
+                        label: Text('Password'),
+                        prefixIcon: Icon(Icons.password),
+                      ),
+                    ),
                   ),
-                ),
-                ReactiveFormConsumer(
-                  key: const Key('submit'),
-                  builder: (context, form, _) => ElevatedButton(
-                    onPressed: () {
-                      context
-                          .read<AuthCubit>()
-                          .createUserWithEmailAndPassword(form.value);
-                    },
-                    child: const Text('Submit'),
+                  ReactiveFormConsumer(
+                    key: const Key('submit'),
+                    builder: (context, form, _) => ElevatedButton(
+                      onPressed: () {
+                        context
+                            .read<AuthCubit>()
+                            .createUserWithEmailAndPassword(form.value);
+                      },
+                      child: const Text('Submit'),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              context.go('/register');
-            },
-            child: const Text('Create an account'),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                context.go('/register');
+              },
+              child: const Text('Create an account'),
+            ),
           ),
         ],
       ),
