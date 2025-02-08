@@ -13,12 +13,14 @@ class AuthCubit extends Cubit<AuthState> {
         email: value['email'] as String,
         password: value['password'] as String,
       );
+      emit(state.copyWith(
+        status: AuthStatus.authLoginSuccess,
+      ));
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
+      emit(state.copyWith(
+        status: AuthStatus.authError,
+        error: e.code,
+      ));
     }
   }
 
@@ -28,14 +30,19 @@ class AuthCubit extends Cubit<AuthState> {
         email: value['email'] as String,
         password: value['password'] as String,
       );
+      emit(state.copyWith(
+        status: AuthStatus.authRegisterSuccess,
+      ));
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
+      emit(state.copyWith(
+        status: AuthStatus.authError,
+        error: e.code,
+      ));
     } catch (e) {
-      print(e);
+      emit(state.copyWith(
+        status: AuthStatus.authError,
+        error: 'create_user_error',
+      ));
     }
   }
 }

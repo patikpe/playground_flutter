@@ -30,7 +30,15 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.status == AuthStatus.authRegisterSuccess) {
+          context.go('/home');
+        } else if (state.status == AuthStatus.authError) {
+          // _formRegister.setErrors({
+          //   'error': state.error,
+          // });
+        }
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -92,9 +100,9 @@ class RegisterView extends StatelessWidget {
                     key: const Key('submit'),
                     builder: (context, form, _) => ElevatedButton(
                       onPressed: () {
-                        // context
-                        //     .read<AuthCubit>()
-                        //     .signInWithEmailAndPassword(form.value);
+                        context
+                            .read<AuthCubit>()
+                            .createUserWithEmailAndPassword(form.value);
                       },
                       child: Text('submit'.translate),
                     ),

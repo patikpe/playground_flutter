@@ -25,7 +25,17 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.status == AuthStatus.authLoginSuccess) {
+          context.go('/home');
+        } else if (state.status == AuthStatus.authError) {
+          _formLogin.controls['email']?.setErrors(
+            {
+              'error': state.error,
+            },
+          );
+        }
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -50,6 +60,7 @@ class LoginView extends StatelessWidget {
                             'field_required'.translate,
                         ValidationMessage.email: (error) =>
                             'field_email_required'.translate,
+                        'error': (error) => (error as String).translate,
                       },
                     ),
                   ),
@@ -72,10 +83,15 @@ class LoginView extends StatelessWidget {
                     key: const Key('submit'),
                     builder: (context, form, _) => ElevatedButton(
                       onPressed: () {
+                        if (_formLogin.hasError('error')) {
+                          _formLogin.removeError('error');
+                          _formLogin.updateValueAndValidity();
+                        }
+
                         if (_formLogin.valid) {
-                          // context
-                          //     .read<AuthCubit>()
-                          //     .createUserWithEmailAndPassword(form.value);
+                          context
+                              .read<AuthCubit>()
+                              .signInWithEmailAndPassword(form.value);
                         }
                       },
                       child: Text('submit'.translate),
