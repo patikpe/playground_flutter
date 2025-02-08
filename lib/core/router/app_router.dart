@@ -9,17 +9,16 @@ class AppRouter {
   static final router = GoRouter(
     initialLocation: '/login',
     routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const AuthView(),
+      ShellRoute(
+        builder: (context, state, child) => AuthView(child: child),
         routes: [
           GoRoute(
-            path: 'login',
-            builder: (context, state) => const LoginView(),
+            path: '/login',
+            builder: (context, state) => LoginView(),
           ),
           GoRoute(
-            path: 'register',
-            builder: (context, state) => const RegisterView(),
+            path: '/register',
+            builder: (context, state) => RegisterView(),
           ),
         ],
       ),
