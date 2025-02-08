@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/auth/cubit/auth_cubit.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -8,8 +9,17 @@ class LoginView extends StatelessWidget {
   LoginView({super.key});
 
   final _formLogin = FormGroup({
-    'email': FormControl<String>(),
-    'password': FormControl<String>(),
+    'email': FormControl<String>(
+      validators: [
+        Validators.required,
+        Validators.email,
+      ],
+    ),
+    'password': FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
   });
 
   @override
@@ -31,10 +41,16 @@ class LoginView extends StatelessWidget {
                     child: ReactiveTextField<String>(
                       key: const Key('email'),
                       formControlName: 'email',
-                      decoration: const InputDecoration(
-                        label: Text('Email'),
+                      decoration: InputDecoration(
+                        label: Text('email'.translate),
                         prefixIcon: Icon(Icons.email),
                       ),
+                      validationMessages: {
+                        ValidationMessage.required: (error) =>
+                            'field_required'.translate,
+                        ValidationMessage.email: (error) =>
+                            'field_email_required'.translate,
+                      },
                     ),
                   ),
                   Padding(
@@ -42,21 +58,27 @@ class LoginView extends StatelessWidget {
                     child: ReactiveTextField<String>(
                       key: const Key('password'),
                       formControlName: 'password',
-                      decoration: const InputDecoration(
-                        label: Text('Password'),
+                      decoration: InputDecoration(
+                        label: Text('password'.translate),
                         prefixIcon: Icon(Icons.password),
                       ),
+                      validationMessages: {
+                        ValidationMessage.required: (error) =>
+                            'field_required'.translate,
+                      },
                     ),
                   ),
                   ReactiveFormConsumer(
                     key: const Key('submit'),
                     builder: (context, form, _) => ElevatedButton(
                       onPressed: () {
-                        context
-                            .read<AuthCubit>()
-                            .createUserWithEmailAndPassword(form.value);
+                        if (_formLogin.valid) {
+                          // context
+                          //     .read<AuthCubit>()
+                          //     .createUserWithEmailAndPassword(form.value);
+                        }
                       },
-                      child: const Text('Submit'),
+                      child: Text('submit'.translate),
                     ),
                   ),
                 ],
@@ -69,7 +91,7 @@ class LoginView extends StatelessWidget {
               onPressed: () {
                 context.go('/register');
               },
-              child: const Text('Create an account'),
+              child: Text('create_account'.translate),
             ),
           ),
         ],

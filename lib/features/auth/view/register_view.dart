@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/auth/cubit/auth_cubit.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -8,9 +9,22 @@ class RegisterView extends StatelessWidget {
   RegisterView({super.key});
 
   final _formRegister = FormGroup({
-    'email': FormControl<String>(),
-    'password': FormControl<String>(),
-    'confirmPassword': FormControl<String>(),
+    'email': FormControl<String>(
+      validators: [
+        Validators.required,
+        Validators.email,
+      ],
+    ),
+    'password': FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
+    'confirmPassword': FormControl<String>(
+      validators: [
+        Validators.required,
+      ],
+    ),
   });
 
   @override
@@ -32,10 +46,16 @@ class RegisterView extends StatelessWidget {
                     child: ReactiveTextField<String>(
                       key: const Key('email'),
                       formControlName: 'email',
-                      decoration: const InputDecoration(
-                        label: Text('Email'),
+                      decoration: InputDecoration(
+                        label: Text('email'.translate),
                         prefixIcon: Icon(Icons.email),
                       ),
+                      validationMessages: {
+                        ValidationMessage.required: (error) =>
+                            'field_required'.translate,
+                        ValidationMessage.email: (error) =>
+                            'field_email_required'.translate,
+                      },
                     ),
                   ),
                   Padding(
@@ -43,10 +63,14 @@ class RegisterView extends StatelessWidget {
                     child: ReactiveTextField<String>(
                       key: const Key('password'),
                       formControlName: 'password',
-                      decoration: const InputDecoration(
-                        label: Text('Password'),
+                      decoration: InputDecoration(
+                        label: Text('password'.translate),
                         prefixIcon: Icon(Icons.password),
                       ),
+                      validationMessages: {
+                        ValidationMessage.required: (error) =>
+                            'field_required'.translate,
+                      },
                     ),
                   ),
                   Padding(
@@ -54,21 +78,25 @@ class RegisterView extends StatelessWidget {
                     child: ReactiveTextField<String>(
                       key: const Key('confirmPassword'),
                       formControlName: 'confirmPassword',
-                      decoration: const InputDecoration(
-                        label: Text('Confirm Password'),
+                      decoration: InputDecoration(
+                        label: Text('confirm_password'.translate),
                         prefixIcon: Icon(Icons.password),
                       ),
+                      validationMessages: {
+                        ValidationMessage.required: (error) =>
+                            'field_required'.translate,
+                      },
                     ),
                   ),
                   ReactiveFormConsumer(
                     key: const Key('submit'),
                     builder: (context, form, _) => ElevatedButton(
                       onPressed: () {
-                        context
-                            .read<AuthCubit>()
-                            .signInWithEmailAndPassword(form.value);
+                        // context
+                        //     .read<AuthCubit>()
+                        //     .signInWithEmailAndPassword(form.value);
                       },
-                      child: const Text('Submit'),
+                      child: Text('submit'.translate),
                     ),
                   ),
                 ],
@@ -81,7 +109,7 @@ class RegisterView extends StatelessWidget {
               onPressed: () {
                 context.go('/login');
               },
-              child: const Text('I have an account'),
+              child: Text('have_account'.translate),
             ),
           ),
         ],
