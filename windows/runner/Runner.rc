@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "playground_flutter" "\0"
+            VALUE "CompanyName", "FlutterPlayground" "\0"
+            VALUE "FileDescription", "Playground" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "playground_flutter" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "playground_flutter.exe" "\0"
-            VALUE "ProductName", "playground_flutter" "\0"
+            VALUE "InternalName", "Playground" "\0"
+            VALUE "LegalCopyright", "Copyright ©️ 2022 FlutterPlayground. All rights reserved." "\0"
+            VALUE "OriginalFilename", "flutterplayground-dev.exe" "\0"
+            VALUE "ProductName", "Playground" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
