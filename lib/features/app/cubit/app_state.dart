@@ -3,6 +3,7 @@ part of 'app_cubit.dart';
 enum AppStatus {
   appInitial,
   appLoaded,
+  appLoadingError,
 }
 
 final class AppState extends Equatable {

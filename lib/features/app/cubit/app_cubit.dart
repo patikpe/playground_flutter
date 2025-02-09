@@ -15,19 +15,26 @@ class AppCubit extends Cubit<AppState> {
   final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
 
   getAppConfig() async {
-    await remoteConfig.setConfigSettings(RemoteConfigSettings(
-      fetchTimeout: const Duration(minutes: 1),
-      minimumFetchInterval: const Duration(hours: 1),
-    ));
-    await remoteConfig.fetchAndActivate();
-    AppConfigModel appConfig = await AppConfig.getStartUpAppConfig();
-    await appDependency<AppLocale>()
-        .getStartUpDeviceLocale(appConfig.supportedLocales);
-    remoteConfigSync();
-    emit(state.copyWith(
-      status: AppStatus.appLoaded,
-      appConfig: appConfig,
-    ));
+    try {
+      await remoteConfig.setConfigSettings(RemoteConfigSettings(
+        fetchTimeout: const Duration(minutes: 1),
+        minimumFetchInterval: const Duration(hours: 1),
+      ));
+      await remoteConfig.fetchAndActivate();
+      AppConfigModel appConfig = await AppConfig.getStartUpAppConfig();
+      await appDependency<AppLocale>()
+          .getStartUpDeviceLocale(appConfig.supportedLocales);
+      remoteConfigSync();
+      emit(state.copyWith(
+        status: AppStatus.appLoaded,
+        appConfig: appConfig,
+      ));
+    } on Exception catch (e) {
+      //add logging
+      emit(state.copyWith(
+        status: AppStatus.appLoadingError,
+      ));
+    }
   }
 
   changeTheme(ThemeMode themeMode) {
