@@ -1,0 +1,32 @@
+# https://pub.dev/packages/package_rename
+package_rename_config:
+  android:
+    app_name: Playground
+    package_name: com.dev.flutterplayground
+    # override_old_package: com.example.example
+    # lang: kotlin
+
+  ios:
+    app_name: Playground
+    bundle_name: playground
+    package_name: com.dev.flutterplayground
+
+  web:
+    app_name: Playground
+    description: Just my flutter playground
+
+  linux:
+    app_name: Playground
+    package_name: com.dev.flutterplayground
+    exe_name: flutterplayground-dev
+
+  windows:
+    app_name: Playground
+    organization: FlutterPlayground
+    copyright_notice: Copyright ©️ 2022 FlutterPlayground. All rights reserved.
+    exe_name: flutterplayground-dev
+
+  macos:
+    app_name: Playground
+    package_name: com.dev.flutterplayground
+    copyright_notice: Copyright ©️ 2022 FlutterPlayground. All rights reserved.

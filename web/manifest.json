@@ -1,11 +1,11 @@
 {
-    "name": "playground_flutter",
-    "short_name": "playground_flutter",
+    "name": "Playground",
+    "short_name": "Playground",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#FF0000",
     "theme_color": "#FF0000",
-    "description": "A new Flutter project.",
+    "description": "Just my flutter playground",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
