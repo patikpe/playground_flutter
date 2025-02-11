@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/features/auth/view/auth_view.dart';
 import 'package:playground_flutter/features/auth/view/login_view.dart';
@@ -7,7 +8,7 @@ import 'package:playground_flutter/features/settings/settings_view.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/home',
     routes: [
       ShellRoute(
         builder: (context, state, child) => AuthView(child: child),
@@ -21,6 +22,12 @@ class AppRouter {
             builder: (context, state) => RegisterView(),
           ),
         ],
+        redirect: (context, state) {
+          if (FirebaseAuth.instance.currentUser != null) {
+            return '/home';
+          }
+          return null;
+        },
       ),
       GoRoute(
         path: '/home',
@@ -31,5 +38,14 @@ class AppRouter {
         builder: (context, state) => const SettingsView(),
       ),
     ],
+    redirect: (context, state) {
+      if (FirebaseAuth.instance.currentUser == null) {
+        if (state.fullPath == '/login' || state.fullPath == '/register') {
+          return null;
+        }
+        return '/login';
+      }
+      return null;
+    },
   );
 }
