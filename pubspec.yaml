@@ -19,7 +19,6 @@ dependencies:
   flutter_bloc: ^9.0.0
   equatable: ^2.0.7
   go_router: ^14.8.0
-  logging: ^1.3.0
   flutter_launcher_icons: ^0.14.3
   get_it: ^8.0.3
   sembast: ^3.8.3

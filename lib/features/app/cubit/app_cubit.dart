@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -30,7 +32,7 @@ class AppCubit extends Cubit<AppState> {
         appConfig: appConfig,
       ));
     } on Exception catch (e) {
-      //add logging
+      log(e.toString());
       emit(state.copyWith(
         status: AppStatus.appLoadingError,
       ));
@@ -68,6 +70,3 @@ class AppCubit extends Cubit<AppState> {
     });
   }
 }
-
-//  _log.warning("Could not get AppConfig data, setting default.", e);
-//  emit(state.copyWith(status: AppStatus.loaded));
