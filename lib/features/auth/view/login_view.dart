@@ -18,8 +18,9 @@ class LoginView extends StatelessWidget {
         if (state.status == AuthStatus.authLoginSuccess) {
           context.go('/home');
         } else if (state.status == AuthStatus.authError) {
-          _formKey.currentState?.fields['email']
-              ?.invalidate(state.error ?? 'Something went wrong');
+          _formKey.currentState?.fields['email']?.invalidate(
+            (state.error ?? 'login_user_error').translate,
+          );
         }
       },
       child: Column(

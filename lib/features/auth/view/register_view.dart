@@ -18,8 +18,9 @@ class RegisterView extends StatelessWidget {
         if (state.status == AuthStatus.authRegisterSuccess) {
           context.go('/home');
         } else if (state.status == AuthStatus.authError) {
-          _formKey.currentState?.fields['email']
-              ?.invalidate(state.error ?? 'Something went wrong');
+          _formKey.currentState?.fields['email']?.invalidate(
+            (state.error ?? 'create_user_error').translate,
+          );
         }
       },
       child: Column(

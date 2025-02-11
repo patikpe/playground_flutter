@@ -21,6 +21,11 @@ class AuthCubit extends Cubit<AuthState> {
         status: AuthStatus.authError,
         error: e.code,
       ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: AuthStatus.authError,
+        error: 'login_user_error',
+      ));
     }
   }
 
