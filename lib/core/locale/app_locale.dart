@@ -3,10 +3,14 @@ import 'dart:io';
 
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:playground_flutter/core/database/local_database.dart';
-import 'package:playground_flutter/core/app_dependency.dart';
 
 class AppLocale {
+  static AppLocale? _instance;
   Map<String, dynamic> localeStrings = {};
+
+  AppLocale._internal();
+
+  factory AppLocale() => _instance ??= AppLocale._internal();
 
   Future<void> getStartUpDeviceLocale(List<String> supportedLocales) async {
     String defaultLocale = Platform.localeName;
@@ -25,9 +29,8 @@ class AppLocale {
   }
 
   Future<Map<String, dynamic>> _getLocale(String localeCode) async {
-    if (await appDependency<LocalDatabase>()
-        .recordExistsAndNotEmpty(localeCode)) {
-      return await appDependency<LocalDatabase>().get(localeCode);
+    if (await DB().recordExistsAndNotEmpty(localeCode)) {
+      return await DB().get(localeCode);
     } else {
       return _getRemoteLocale(localeCode);
     }
@@ -36,7 +39,6 @@ class AppLocale {
   Future<Map<String, dynamic>> _getRemoteLocale(String localeCode) async {
     await FirebaseRemoteConfig.instance.fetchAndActivate();
     String locales = FirebaseRemoteConfig.instance.getString(localeCode);
-    return await appDependency<LocalDatabase>()
-        .update(localeCode, json.decode(locales));
+    return await DB().update(localeCode, json.decode(locales));
   }
 }
