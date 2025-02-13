@@ -31,6 +31,7 @@ final class AppState extends Equatable {
 
   @override
   List<Object?> get props => [
+        identityHashCode(this),
         status,
         appConfig,
         themeMode,

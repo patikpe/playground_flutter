@@ -14,15 +14,8 @@ part 'app_state.dart';
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(AppState());
 
-  final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
-
   getAppConfig() async {
     try {
-      await remoteConfig.setConfigSettings(RemoteConfigSettings(
-        fetchTimeout: const Duration(minutes: 1),
-        minimumFetchInterval: const Duration(hours: 1),
-      ));
-      await remoteConfig.fetchAndActivate();
       AppConfigModel appConfig = await AppConfig.getStartUpAppConfig();
       await appDependency<AppLocale>()
           .getStartUpDeviceLocale(appConfig.supportedLocales);
@@ -47,8 +40,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   remoteConfigSync() {
-    remoteConfig.onConfigUpdated.listen((event) async {
-      await remoteConfig.fetchAndActivate();
+    FirebaseRemoteConfig.instance.onConfigUpdated.listen((event) async {
       for (String value in event.updatedKeys) {
         switch (value) {
           case 'appConfig':

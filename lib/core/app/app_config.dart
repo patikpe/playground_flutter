@@ -23,6 +23,7 @@ class AppConfig {
   }
 
   static Future<AppConfigModel> _getRemoteAppConfig() async {
+    await FirebaseRemoteConfig.instance.fetchAndActivate();
     AppConfigModel appConfig = AppConfigModel.fromRawJson(
         FirebaseRemoteConfig.instance.getString('appConfig'));
     await appDependency<LocalDatabase>()

@@ -34,6 +34,7 @@ class AppLocale {
   }
 
   Future<Map<String, dynamic>> _getRemoteLocale(String localeCode) async {
+    await FirebaseRemoteConfig.instance.fetchAndActivate();
     String locales = FirebaseRemoteConfig.instance.getString(localeCode);
     return await appDependency<LocalDatabase>()
         .update(localeCode, json.decode(locales));
