@@ -51,9 +51,8 @@ class AppCubit extends Cubit<AppState> {
             // Default case to update locale
             if (value.contains('_')) {
               await AppLocale().forceLocaleUpdate(value);
-              emit(state.copyWith(
-                status: AppStatus.appLoaded,
-              ));
+              // emit state to update screen but not just for the app.
+              // create a app observer and update the labels there ?!?!?!?
             }
         }
       }
