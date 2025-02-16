@@ -1,5 +1,4 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:playground_flutter/core/app_dependency.dart';
 import 'package:playground_flutter/core/database/local_database.dart';
 import 'package:playground_flutter/models/app_config/app_config_model.dart';
 
@@ -13,20 +12,18 @@ class AppConfig {
   }
 
   static Future<AppConfigModel> getAppConfig() async {
-    if (await appDependency<LocalDatabase>()
-        .recordExistsAndNotEmpty('appConfig')) {
-      return AppConfigModel.fromJson(
-          await appDependency<LocalDatabase>().get('appConfig'));
+    if (await DB().recordExistsAndNotEmpty('appConfig')) {
+      return AppConfigModel.fromJson(await DB().get('appConfig'));
     } else {
       return _getRemoteAppConfig();
     }
   }
 
   static Future<AppConfigModel> _getRemoteAppConfig() async {
+    await FirebaseRemoteConfig.instance.fetchAndActivate();
     AppConfigModel appConfig = AppConfigModel.fromRawJson(
         FirebaseRemoteConfig.instance.getString('appConfig'));
-    await appDependency<LocalDatabase>()
-        .update('appConfig', appConfig.toJson());
+    await DB().update('appConfig', appConfig.toJson());
     return appConfig;
   }
 }

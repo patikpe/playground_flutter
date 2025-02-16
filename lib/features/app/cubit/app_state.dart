@@ -3,6 +3,7 @@ part of 'app_cubit.dart';
 enum AppStatus {
   appInitial,
   appLoaded,
+  appLoadingError,
 }
 
 final class AppState extends Equatable {
@@ -30,6 +31,7 @@ final class AppState extends Equatable {
 
   @override
   List<Object?> get props => [
+        identityHashCode(this),
         status,
         appConfig,
         themeMode,

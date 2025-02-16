@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:playground_flutter/core/router/app_router.dart';
 import 'package:playground_flutter/core/app/app_theme.dart';
 import 'package:playground_flutter/features/app/cubit/app_cubit.dart';
+import 'package:playground_flutter/widgets/general_widgets/app_error.dart';
 import 'package:playground_flutter/widgets/general_widgets/app_loading.dart';
 
 class MainApp extends StatelessWidget {
@@ -22,6 +23,14 @@ class MainApp extends StatelessWidget {
                 context.read<AppCubit>().getAppConfig();
               });
               return AppLoading();
+            case AppStatus.appLoadingError:
+              return AppError(
+                errorMessage: 'Error loading app',
+                buttonText: 'Retry',
+                onPressed: () {
+                  context.read<AppCubit>().getAppConfig();
+                },
+              );
             case AppStatus.appLoaded:
               return MaterialApp.router(
                 title: state.appConfig?.appName,

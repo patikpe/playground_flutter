@@ -3,8 +3,8 @@
 A new Flutter project.
 
 
-flutter pub upgrade --tighten
+next branch
+do custom app logger that can be used with firebase 
+test to the app 
 
-
-flutter pub upgrade --major-versions
 

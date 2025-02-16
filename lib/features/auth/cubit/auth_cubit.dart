@@ -8,6 +8,9 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(const AuthState());
 
   signInWithEmailAndPassword(Map<String, Object?> value) async {
+    emit(state.copyWith(
+      status: AuthStatus.authLoading,
+    ));
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: value['email'] as String,
@@ -21,10 +24,18 @@ class AuthCubit extends Cubit<AuthState> {
         status: AuthStatus.authError,
         error: e.code,
       ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: AuthStatus.authError,
+        error: 'login_user_error',
+      ));
     }
   }
 
   createUserWithEmailAndPassword(Map<String, Object?> value) async {
+    emit(state.copyWith(
+      status: AuthStatus.authLoading,
+    ));
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: value['email'] as String,

@@ -1,102 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/auth/cubit/auth_cubit.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
-  final _formLogin = FormGroup({
-    'email': FormControl<String>(
-      validators: [
-        Validators.required,
-        Validators.email,
-      ],
-    ),
-    'password': FormControl<String>(
-      validators: [
-        Validators.required,
-      ],
-    ),
-  });
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.status == AuthStatus.authLoginSuccess) {
           context.go('/home');
-        } else if (state.status == AuthStatus.authError) {
-          _formLogin.controls['email']?.setErrors(
-            {
-              'error': state.error,
-            },
-          );
         }
       },
-      child: Column(
+      builder: (context, state) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: ReactiveForm(
-              formGroup: _formLogin,
+            child: FormBuilder(
+              key: _formKey,
               child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),
-                    child: ReactiveTextField<String>(
-                      key: const Key('email'),
-                      formControlName: 'email',
+                    child: FormBuilderTextField(
+                      name: 'email',
                       decoration: InputDecoration(
-                        label: Text('email'.translate),
-                        prefixIcon: Icon(Icons.email),
+                        labelText: 'email'.translate,
                       ),
-                      validationMessages: {
-                        ValidationMessage.required: (error) =>
-                            'field_required'.translate,
-                        ValidationMessage.email: (error) =>
-                            'field_email_required'.translate,
-                        'error': (error) => (error as String).translate,
-                      },
+                      autovalidateMode: AutovalidateMode.onUnfocus,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                        FormBuilderValidators.email(),
+                      ]),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),
-                    child: ReactiveTextField<String>(
-                      key: const Key('password'),
-                      formControlName: 'password',
+                    child: FormBuilderTextField(
+                      name: 'password',
                       decoration: InputDecoration(
-                        label: Text('password'.translate),
-                        prefixIcon: Icon(Icons.password),
+                        labelText: 'password'.translate,
                       ),
-                      validationMessages: {
-                        ValidationMessage.required: (error) =>
-                            'field_required'.translate,
-                      },
+                      obscureText: true,
+                      autovalidateMode: AutovalidateMode.onUnfocus,
+                      validator: FormBuilderValidators.required(),
                     ),
                   ),
-                  ReactiveFormConsumer(
-                    key: const Key('submit'),
-                    builder: (context, form, _) => ElevatedButton(
-                      onPressed: () {
-                        if (_formLogin.hasError('error')) {
-                          _formLogin.removeError('error');
-                          _formLogin.updateValueAndValidity();
-                        }
-
-                        if (_formLogin.valid) {
-                          context
-                              .read<AuthCubit>()
-                              .signInWithEmailAndPassword(form.value);
-                        }
-                      },
-                      child: Text('submit'.translate),
-                    ),
-                  ),
+                  state.status == AuthStatus.authError
+                      ? Padding(
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: Text(state.error!.translate),
+                        )
+                      : SizedBox(),
+                  state.status == AuthStatus.authLoading
+                      ? Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircularProgressIndicator(),
+                        )
+                      : ElevatedButton(
+                          onPressed: () {
+                            _formKey.currentState?.saveAndValidate();
+                            if (_formKey.currentState!.isValid) {
+                              context
+                                  .read<AuthCubit>()
+                                  .signInWithEmailAndPassword(
+                                      _formKey.currentState!.value);
+                            }
+                          },
+                          child: Text('login'.translate),
+                        ),
                 ],
               ),
             ),
