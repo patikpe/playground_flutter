@@ -2,6 +2,7 @@ part of 'auth_cubit.dart';
 
 enum AuthStatus {
   authError,
+  authLoading,
   authLoginSuccess,
   authRegisterSuccess,
 }

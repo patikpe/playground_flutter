@@ -13,17 +13,13 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.status == AuthStatus.authLoginSuccess) {
           context.go('/home');
-        } else if (state.status == AuthStatus.authError) {
-          _formKey.currentState?.fields['email']?.invalidate(
-            (state.error ?? 'login_user_error').translate,
-          );
         }
       },
-      child: Column(
+      builder: (context, state) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -59,16 +55,29 @@ class LoginView extends StatelessWidget {
                       validator: FormBuilderValidators.required(),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      _formKey.currentState?.saveAndValidate();
-                      if (_formKey.currentState!.isValid) {
-                        context.read<AuthCubit>().signInWithEmailAndPassword(
-                            _formKey.currentState!.value);
-                      }
-                    },
-                    child: Text('login'.translate),
-                  ),
+                  state.status == AuthStatus.authError
+                      ? Padding(
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: Text(state.error!.translate),
+                        )
+                      : SizedBox(),
+                  state.status == AuthStatus.authLoading
+                      ? Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircularProgressIndicator(),
+                        )
+                      : ElevatedButton(
+                          onPressed: () {
+                            _formKey.currentState?.saveAndValidate();
+                            if (_formKey.currentState!.isValid) {
+                              context
+                                  .read<AuthCubit>()
+                                  .signInWithEmailAndPassword(
+                                      _formKey.currentState!.value);
+                            }
+                          },
+                          child: Text('login'.translate),
+                        ),
                 ],
               ),
             ),
