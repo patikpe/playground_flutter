@@ -1,9 +1,27 @@
+import 'package:flutter/foundation.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+
 class AppLogger {
-  info() {}
+  static AppLogger? _instance;
 
-  warning() {}
+  AppLogger._internal();
 
-  error() {}
+  factory AppLogger() => _instance ??= AppLogger._internal();
 
-  fatal() {}
+  initLog() async {
+    if (kDebugMode) {
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
+    }
+    FlutterError.onError =
+        (errorDetails) => logToFirebase(errorDetails, errorDetails.stack);
+
+    PlatformDispatcher.instance.onError = (error, stack) {
+      logToFirebase(error, stack);
+      return true;
+    };
+  }
+
+  void logToFirebase(dynamic exception, StackTrace? stack) async {
+    await FirebaseCrashlytics.instance.recordError(exception, stack);
+  }
 }

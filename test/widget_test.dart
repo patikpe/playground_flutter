@@ -1,7 +1,5 @@
-import 'test_one.dart';
-import 'test_two.dart';
+import 'firebase_test/firebase_crashlytics_test.dart';
 
 void main() {
-  testOne();
-  testTwo();
+  firebaseCrashlyticsTest();
 }
