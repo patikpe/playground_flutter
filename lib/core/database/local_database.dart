@@ -26,7 +26,6 @@ class DB {
         codec: MyAsyncCodec(),
       ),
     );
-    return;
   }
 
   Future<bool> recordExistsAndNotEmpty(String key) async =>
