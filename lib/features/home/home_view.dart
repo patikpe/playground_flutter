@@ -4,12 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/home/cubit/home_cubit.dart';
-import 'package:playground_flutter/widgets/custom_widgets/item_carousel/icon_carousel.dart';
-import 'package:playground_flutter/widgets/custom_widgets/item_carousel/image_carousel.dart';
-import 'package:playground_flutter/widgets/custom_widgets/item_carousel/text_carousel.dart';
-import 'package:playground_flutter/widgets/custom_widgets/item_image_button/double_image_button.dart';
-import 'package:playground_flutter/widgets/custom_widgets/item_image_button/single_image_button.dart';
-import 'package:playground_flutter/widgets/custom_widgets/item_image_button/triple_image_button.dart';
+import 'package:playground_flutter/widgets/custom_widgets/custom_button/custom_button_enum.dart';
+import 'package:playground_flutter/widgets/custom_widgets/custom_button/custom_button.dart';
 import 'package:playground_flutter/widgets/general_widgets/app_loading.dart';
 
 class HomeView extends StatelessWidget {
@@ -59,14 +55,13 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 body: ListView(
-                  children: [
-                    IconCarousel(),
-                    TextCarousel(),
-                    ImageCarousel(),
-                    SingleImageButton(),
-                    DoubleImageButton(),
-                    TripleImageButton(),
-                  ],
+                  children: CustomButtonEnum.values
+                      .map(
+                        (e) => CustomButton(
+                          customButtonType: e,
+                        ),
+                      )
+                      .toList(),
                 ),
               );
           }

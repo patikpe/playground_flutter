@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:playground_flutter/widgets/custom_widgets/custom_button/custom_button_enum.dart';
 
 class ImageCarousel extends StatelessWidget {
-  const ImageCarousel({super.key});
+  final ButtonTypeListModel buttonTypeListData;
+
+  const ImageCarousel({
+    required this.buttonTypeListData,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +48,28 @@ class ImageCarousel extends StatelessWidget {
       ),
     );
   }
+}
+
+class ButtonTypeListModel {
+  CustomButtonEnum buttonType;
+  List<ButtonTypeModel> buttonItems;
+
+  ButtonTypeListModel({
+    required this.buttonType,
+    required this.buttonItems,
+  });
+}
+
+class ButtonTypeModel {
+  String? imageUrl;
+  String? label;
+  Function onPress;
+
+  ButtonTypeModel({
+    this.imageUrl,
+    this.label,
+    required this.onPress,
+  });
 }
 
 enum ImageInfo {
