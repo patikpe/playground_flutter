@@ -4,8 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/home/cubit/home_cubit.dart';
+import 'package:playground_flutter/models/home/home_model.dart';
 import 'package:playground_flutter/widgets/custom_widgets/custom_button/custom_button_enum.dart';
-import 'package:playground_flutter/widgets/custom_widgets/custom_button/custom_button.dart';
+import 'package:playground_flutter/features/home/home_layout_builder.dart';
 import 'package:playground_flutter/widgets/general_widgets/app_loading.dart';
 
 class HomeView extends StatelessWidget {
@@ -55,10 +56,11 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 body: ListView(
-                  children: CustomButtonEnum.values
+                  children: homeDataStuff.buttonListItems
                       .map(
-                        (e) => CustomButton(
-                          customButtonType: e,
+                        (e) => HomeLayoutBuilder(
+                          customButtonType: e.buttonType,
+                          buttonItems: e.buttonItems,
                         ),
                       )
                       .toList(),
@@ -70,3 +72,185 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+HomeModel homeDataStuff = HomeModel(
+  buttonListItems: [
+    ButtonTypeListModel(
+      buttonType: CustomButtonEnum.iconCarousel,
+      buttonItems: [
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xe6a1',
+          label: 'Cameras',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xe37b',
+          label: 'Lighting',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xe656',
+          label: 'Climate',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xe6e7',
+          label: 'Wifi',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xe378',
+          label: 'Media',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xf0794',
+          label: 'Security',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xe3d8',
+          label: 'Safety',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image: '0xe047',
+          label: 'More',
+        ),
+      ],
+    ),
+    ButtonTypeListModel(
+      buttonType: CustomButtonEnum.textCarousel,
+      buttonItems: [
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'Cameras',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'Lighting',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'Climate',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'Wifi',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'Media',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'Security',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'Safety',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          label: 'More',
+        ),
+      ],
+    ),
+    ButtonTypeListModel(
+      buttonType: CustomButtonEnum.imageCarousel,
+      buttonItems: [
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
+          label: 'The Flow',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png',
+          label: 'Through the Pane',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png',
+          label: 'Iridescence',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_4.png',
+          label: 'Sea Change',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_5.png',
+          label: 'Blue Symphony',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_6.png',
+          label: 'When It Rains',
+        ),
+      ],
+    ),
+    // Single Button Image
+    ButtonTypeListModel(
+      buttonType: CustomButtonEnum.imageButton,
+      buttonItems: [
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
+          label: 'The Flow',
+        ),
+      ],
+    ),
+    // Double Button Image
+    ButtonTypeListModel(
+      buttonType: CustomButtonEnum.imageButton,
+      buttonItems: [
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
+          label: 'The Flow',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png',
+          label: 'Through the Pane',
+        ),
+      ],
+    ),
+    // Triple Button Image
+    ButtonTypeListModel(
+      buttonType: CustomButtonEnum.imageButton,
+      buttonItems: [
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
+          label: 'The Flow',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png',
+          label: 'Through the Pane',
+        ),
+        ButtonTypeModel(
+          onPress: () {},
+          image:
+              'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png',
+          label: 'Iridescence',
+        ),
+      ],
+    ),
+  ],
+);

@@ -2,9 +2,7 @@ enum CustomButtonEnum {
   iconCarousel("iconCarousel"),
   textCarousel("textCarousel"),
   imageCarousel("imageCarousel"),
-  singleImageButton("singleImageButton"),
-  doubleImageButton("doubleImageButton"),
-  tripleImageButton("tripleImageButton");
+  imageButton("singleImageButton");
 
   const CustomButtonEnum(this.code);
 
