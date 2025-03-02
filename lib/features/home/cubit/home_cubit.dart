@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
@@ -17,42 +19,42 @@ class HomeCubit extends Cubit<HomeState> {
           buttonType: CustomButtonEnum.iconCarousel,
           buttonItems: [
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xe6a1',
               label: 'Cameras',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xe37b',
               label: 'Lighting',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xe656',
               label: 'Climate',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xe6e7',
               label: 'Wifi',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xe378',
               label: 'Media',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xf0794',
               label: 'Security',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xe3d8',
               label: 'Safety',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               iconCode: '0xe047',
               label: 'More',
             ),
@@ -62,35 +64,35 @@ class HomeCubit extends Cubit<HomeState> {
           buttonType: CustomButtonEnum.textCarousel,
           buttonItems: [
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'Cameras',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'Lighting',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'Climate',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'Wifi',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'Media',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'Security',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'Safety',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               label: 'More',
             ),
           ],
@@ -99,37 +101,37 @@ class HomeCubit extends Cubit<HomeState> {
           buttonType: CustomButtonEnum.imageCarousel,
           buttonItems: [
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
               label: 'The Flow',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png',
               label: 'Through the Pane',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png',
               label: 'Iridescence',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_4.png',
               label: 'Sea Change',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_5.png',
               label: 'Blue Symphony',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_6.png',
               label: 'When It Rains',
@@ -141,7 +143,7 @@ class HomeCubit extends Cubit<HomeState> {
           buttonType: CustomButtonEnum.imageButton,
           buttonItems: [
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
               label: 'The Flow',
@@ -153,13 +155,13 @@ class HomeCubit extends Cubit<HomeState> {
           buttonType: CustomButtonEnum.imageButton,
           buttonItems: [
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
               label: 'The Flow',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png',
               label: 'Through the Pane',
@@ -171,19 +173,19 @@ class HomeCubit extends Cubit<HomeState> {
           buttonType: CustomButtonEnum.imageButton,
           buttonItems: [
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png',
               label: 'The Flow',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png',
               label: 'Through the Pane',
             ),
             CustomButtonModel(
-              onPress: () {},
+              navPath: '/notFound',
               imageUrl:
                   'https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png',
               label: 'Iridescence',
@@ -192,6 +194,7 @@ class HomeCubit extends Cubit<HomeState> {
         ),
       ],
     );
+
     emit(state.copyWith(
       status: HomeStatus.homeLoaded,
       homeData: homeData,
