@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/models/home/home_model.dart';
+import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
 
 class TextCarousel extends StatelessWidget {
-  final List<ButtonTypeModel> buttonItems;
+  final List<CustomButtonModel> buttonItems;
 
   const TextCarousel({
     required this.buttonItems,

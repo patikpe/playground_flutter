@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:playground_flutter/models/home/home_model.dart';
-import 'package:playground_flutter/widgets/custom_widgets/custom_button/custom_button_enum.dart';
+import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
+import 'package:playground_flutter/models/custom_button/custom_button_enum.dart';
 import 'package:playground_flutter/widgets/custom_widgets/custom_button/icon_carousel.dart';
 import 'package:playground_flutter/widgets/custom_widgets/custom_button/image_button.dart';
 import 'package:playground_flutter/widgets/custom_widgets/custom_button/image_carousel.dart';
@@ -8,7 +8,7 @@ import 'package:playground_flutter/widgets/custom_widgets/custom_button/text_car
 
 class HomeLayoutBuilder extends StatelessWidget {
   final CustomButtonEnum customButtonType;
-  final List<ButtonTypeModel> buttonItems;
+  final List<CustomButtonModel> buttonItems;
 
   const HomeLayoutBuilder({
     required this.customButtonType,

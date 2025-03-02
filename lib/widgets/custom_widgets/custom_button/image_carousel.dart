@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/models/home/home_model.dart';
+import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
 
 class ImageCarousel extends StatelessWidget {
-  final List<ButtonTypeModel> buttonItems;
+  final List<CustomButtonModel> buttonItems;
 
   const ImageCarousel({
     required this.buttonItems,
@@ -29,7 +29,7 @@ class ImageCarousel extends StatelessWidget {
                       width: double.infinity,
                       fit: BoxFit.fill,
                       image: NetworkImage(
-                        e.image ?? '', // Use Default image
+                        e.imageUrl ?? '', // Use Default image
                       ),
                     ),
                     if (e.label != null)

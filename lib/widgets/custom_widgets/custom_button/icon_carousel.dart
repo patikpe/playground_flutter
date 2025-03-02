@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/models/home/home_model.dart';
+import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
 
 class IconCarousel extends StatelessWidget {
-  final List<ButtonTypeModel> buttonItems;
+  final List<CustomButtonModel> buttonItems;
   const IconCarousel({
     required this.buttonItems,
     super.key,
@@ -25,7 +25,10 @@ class IconCarousel extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 5.0),
                   child: Icon(
-                    IconData(int.parse(e.image!), fontFamily: 'MaterialIcons'),
+                    IconData(
+                      int.parse(e.iconCode ?? '0xe237'),
+                      fontFamily: 'MaterialIcons',
+                    ),
                     size: 32.0,
                   ),
                 ),

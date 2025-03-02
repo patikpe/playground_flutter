@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/models/home/home_model.dart';
+import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
 
 class ImageButton extends StatelessWidget {
-  final List<ButtonTypeModel> buttonItems;
+  final List<CustomButtonModel> buttonItems;
 
   const ImageButton({
     required this.buttonItems,
     super.key,
   });
-
-  // : assert(buttonTypeListData.buttonItems.length < 3, 'error');
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class ImageButton extends StatelessWidget {
                           width: double.infinity,
                           fit: BoxFit.fill,
                           image: NetworkImage(
-                            e.image ?? '',
+                            e.imageUrl ?? '',
                           ),
                         ),
                       ),
