@@ -54,10 +54,10 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 body: ListView(
-                  children: state.homeData!.buttonListItems //make null option
+                  children: state.homeData!.homeListItems //make null option
                       .map(
                         (e) => HomeLayoutBuilder(
-                          customButtonType: e.buttonType,
+                          customButtonType: e.buttonType!,
                           buttonItems: e.buttonItems,
                         ),
                       )

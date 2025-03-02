@@ -12,7 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   getHomeConfig() {
     HomeModel homeData = HomeModel(
-      buttonListItems: [
+      homeListItems: [
         CustomListButtonModel(
           buttonType: CustomButtonEnum.iconCarousel,
           buttonItems: [
