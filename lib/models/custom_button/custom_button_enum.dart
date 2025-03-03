@@ -4,7 +4,7 @@ enum CustomButtonEnum {
   iconCarousel("iconCarousel"),
   textCarousel("textCarousel"),
   imageCarousel("imageCarousel"),
-  imageButton("singleImageButton");
+  imageButton("imageButton");
 
   const CustomButtonEnum(this.code);
 

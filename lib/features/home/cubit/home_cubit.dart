@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
@@ -192,6 +194,8 @@ class HomeCubit extends Cubit<HomeState> {
         ),
       ],
     );
+
+    log(homeData.toRawJson());
 
     emit(state.copyWith(
       status: HomeStatus.homeLoaded,

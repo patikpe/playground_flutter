@@ -19,7 +19,7 @@ class CustomListButtonModel {
 
   factory CustomListButtonModel.fromJson(Map<String, dynamic> json) =>
       CustomListButtonModel(
-        buttonType: CustomButtonEnum.fromString(json["instructions"]),
+        buttonType: CustomButtonEnum.fromString(json["buttonType"]),
         buttonItems: List<CustomButtonModel>.from(
             json["buttonItems"].map((x) => CustomListButtonModel.fromJson(x))),
       );
