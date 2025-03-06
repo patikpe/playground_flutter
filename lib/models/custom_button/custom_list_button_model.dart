@@ -21,7 +21,7 @@ class CustomListButtonModel {
       CustomListButtonModel(
         buttonType: CustomButtonEnum.fromString(json["buttonType"]),
         buttonItems: List<CustomButtonModel>.from(
-            json["buttonItems"].map((x) => CustomListButtonModel.fromJson(x))),
+            json["buttonItems"].map((x) => CustomButtonModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

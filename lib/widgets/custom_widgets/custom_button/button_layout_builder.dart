@@ -6,11 +6,11 @@ import 'package:playground_flutter/widgets/custom_widgets/custom_button/image_bu
 import 'package:playground_flutter/widgets/custom_widgets/custom_button/image_carousel.dart';
 import 'package:playground_flutter/widgets/custom_widgets/custom_button/text_carousel.dart';
 
-class HomeLayoutBuilder extends StatelessWidget {
+class ButtonLayoutBuilder extends StatelessWidget {
   final CustomButtonEnum customButtonType;
   final List<CustomButtonModel> buttonItems;
 
-  const HomeLayoutBuilder({
+  const ButtonLayoutBuilder({
     required this.customButtonType,
     required this.buttonItems,
     super.key,
