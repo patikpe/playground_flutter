@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/models/custom_button/custom_button_model.dart';
 
 class ImageButton extends StatelessWidget {
@@ -21,7 +22,8 @@ class ImageButton extends StatelessWidget {
                 child: ElevatedButton(
                   style: ButtonStyle(
                       padding: WidgetStatePropertyAll(EdgeInsets.zero)),
-                  onPressed: e.onPress,
+                  onPressed:
+                      e.onPress ?? () => context.push(e.navPath ?? '/notFound'),
                   child: Stack(
                     alignment: AlignmentDirectional.bottomStart,
                     children: [
