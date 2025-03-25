@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/home/cubit/home_cubit.dart';
+import 'package:playground_flutter/widgets/custom_widgets/custom_button/button_layout_builder.dart';
 import 'package:playground_flutter/widgets/general_widgets/app_loading.dart';
 
 class HomeView extends StatelessWidget {
@@ -52,8 +53,15 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                 ),
-                body: Center(
-                  child: Text('test_label'.translate),
+                body: ListView(
+                  children: state.homeData!.homeListItems //make null option
+                      .map(
+                        (e) => ButtonLayoutBuilder(
+                          customButtonType: e.buttonType!,
+                          buttonItems: e.buttonItems,
+                        ),
+                      )
+                      .toList(),
                 ),
               );
           }

@@ -13,15 +13,15 @@ class AppLogger {
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
     }
     FlutterError.onError =
-        (errorDetails) => logToFirebase(errorDetails, errorDetails.stack);
+        (errorDetails) => _logToFirebase(errorDetails, errorDetails.stack);
 
     PlatformDispatcher.instance.onError = (error, stack) {
-      logToFirebase(error, stack);
+      _logToFirebase(error, stack);
       return true;
     };
   }
 
-  void logToFirebase(dynamic exception, StackTrace? stack) async {
+  void _logToFirebase(dynamic exception, StackTrace? stack) async {
     await FirebaseCrashlytics.instance.recordError(exception, stack);
   }
 }
