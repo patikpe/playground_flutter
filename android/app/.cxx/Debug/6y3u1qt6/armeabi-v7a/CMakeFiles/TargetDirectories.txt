@@ -1,2 +1,0 @@
-C:/Users/Patrick/Documents/projects/playground_flutter/android/app/.cxx/Debug/6y3u1qt6/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/Users/Patrick/Documents/projects/playground_flutter/android/app/.cxx/Debug/6y3u1qt6/armeabi-v7a/CMakeFiles/rebuild_cache.dir
