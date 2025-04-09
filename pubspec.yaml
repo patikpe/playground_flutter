@@ -28,8 +28,8 @@ dependencies:
   flutter_form_builder: ^10.0.1
   form_builder_validators: ^11.1.2
   collection: ^1.19.1
-  tekio:
-    path: ../tekio/
+  rashin_widgets:
+    path: ../rashin_flutter_tools/packages/rashin_widgets/
 
 dev_dependencies:
   flutter_test:

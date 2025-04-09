@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/home/cubit/home_cubit.dart';
 import 'package:playground_flutter/widgets/general_widgets/app_loading.dart';
-import 'package:tekio/widget_builder/menu/button_layout_builder.dart';
+import 'package:rashin_widgets/widget_builder/menu/button_layout_builder.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -56,7 +56,7 @@ class HomeView extends StatelessWidget {
                 body: ListView(
                   children: state.homeData!.homeListItems //make null option
                       .map(
-                        (e) => TekioButtonLayoutBuilder(
+                        (e) => RashinButtonLayoutBuilder(
                           customButtonType: e.buttonType!,
                           buttonItems: e.buttonItems,
                         ),

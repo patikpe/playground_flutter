@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:tekio/models/custom_button/custom_list_button_model.dart';
+import 'package:rashin_widgets/models/custom_button/custom_list_button_model.dart';
 
 class HomeModel {
   List<CustomListButtonModel> homeListItems;
