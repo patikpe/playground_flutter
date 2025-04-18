@@ -51,7 +51,10 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                 ),
-                body: TekioBaseMenuBuilder(baseMenuData: state.homeData!),
+                body: TekioBaseMenuBuilder(
+                  baseMenuData: state.homeData!,
+                  navigateTo: (path) => context.push(path),
+                ),
               );
           }
         },
