@@ -19,23 +19,23 @@ dependencies:
   bloc: ^9.0.0
   flutter_bloc: ^9.1.0
   equatable: ^2.0.7
-  go_router: ^14.8.1
+  go_router: ^15.0.0
   flutter_launcher_icons: ^0.14.3
-  sembast: ^3.8.4+1
+  sembast: ^3.8.5
   path_provider: ^2.1.5
   path: ^1.9.1
   encrypt: ^5.0.3
   flutter_form_builder: ^10.0.1
   form_builder_validators: ^11.1.2
   collection: ^1.19.1
-  rashin_widgets:
-    path: ../rashin_flutter_tools/packages/rashin_widgets/
+  tekio_menu:
+    path: ../tekio_menu/
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  package_rename: ^1.9.0
+  package_rename: ^1.10.0
 
 flutter:
   uses-material-design: true
