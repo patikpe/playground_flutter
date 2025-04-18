@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/features/auth/view/auth_view.dart';
 import 'package:playground_flutter/features/auth/view/login_view.dart';
@@ -43,6 +44,7 @@ class AppRouter {
         builder: (context, state) => const ScreenNotFound(),
       ),
     ],
+    errorBuilder: (context, state) => const ScreenNotFound(),
     redirect: (context, state) {
       if (FirebaseAuth.instance.currentUser == null) {
         if (state.fullPath == '/login' || state.fullPath == '/register') {

@@ -46,9 +46,7 @@ class HomeView extends StatelessWidget {
                       ),
                       ListTile(
                         title: Text('settings'.translate),
-                        onTap: () {
-                          context.push('/settings');
-                        },
+                        onTap: () => context.push('/settings'),
                       ),
                     ],
                   ),
