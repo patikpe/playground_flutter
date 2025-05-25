@@ -3445,11 +3445,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/patrick/projects/tekio_server/TekioBackend/TekioBackend.csproj",
+      "projectUniqueName": "/home/patrick/projects/tekio_project/tekio_server/TekioBackend/TekioBackend.csproj",
       "projectName": "TekioBackend",
-      "projectPath": "/home/patrick/projects/tekio_server/TekioBackend/TekioBackend.csproj",
+      "projectPath": "/home/patrick/projects/tekio_project/tekio_server/TekioBackend/TekioBackend.csproj",
       "packagesPath": "/home/patrick/.nuget/packages/",
-      "outputPath": "/home/patrick/projects/tekio_server/TekioBackend/obj/",
+      "outputPath": "/home/patrick/projects/tekio_project/tekio_server/TekioBackend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/patrick/.nuget/NuGet/NuGet.Config"

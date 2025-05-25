@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TekioBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2b81a54ee7c03aea8580658808d97f3c4bbea04")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc269d41d1c5b57cc3fa61639ee5e924f5e32edd")]
 [assembly: System.Reflection.AssemblyProductAttribute("TekioBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TekioBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
