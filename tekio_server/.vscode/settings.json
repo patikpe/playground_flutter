@@ -1,0 +1,10 @@
+{
+    "dotnet.defaultSolution": "tekio_server.slnx",
+    "cSpell.words": [
+        "appconfig",
+        "Newtonsoft",
+        "Npgsql",
+        "Swashbuckle",
+        "tekio"
+    ]
+}
