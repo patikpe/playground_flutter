@@ -626,6 +626,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.1"
+  tekio_forms:
+    dependency: "direct main"
+    description:
+      name: tekio_forms
+      sha256: d20f2b1457da80bfd67b76c8dd6c8e449f938caf667c1d05b7682b5e3c627780
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
+  tekio_menu:
+    dependency: "direct main"
+    description:
+      name: tekio_menu
+      sha256: e3f656e618ec8b8174b8a841740dd4cbb601897c92ee1d293d0468946eba1099
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.4"
   term_glyph:
     dependency: transitive
     description:
@@ -699,5 +715,5 @@ packages:
     source: hosted
     version: "3.1.3"
 sdks:
-  dart: ">=3.7.0 <4.0.0"
+  dart: ">=3.7.2 <4.0.0"
   flutter: ">=3.29.0"
