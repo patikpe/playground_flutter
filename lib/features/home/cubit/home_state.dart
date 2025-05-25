@@ -7,20 +7,20 @@ enum HomeStatus {
 
 class HomeState extends Equatable {
   final HomeStatus status;
-  final BaseMenuModel? homeData;
+  // final BaseMenuModel? homeData;
 
   const HomeState({
     this.status = HomeStatus.homeInitial,
-    this.homeData,
+    // this.homeData,
   });
 
   HomeState copyWith({
     HomeStatus? status,
-    BaseMenuModel? homeData,
+    // BaseMenuModel? homeData,
   }) {
     return HomeState(
       status: status ?? this.status,
-      homeData: homeData ?? this.homeData,
+      // homeData: homeData ?? this.homeData,
     );
   }
 
@@ -28,6 +28,6 @@ class HomeState extends Equatable {
   List<Object?> get props => [
         identityHashCode(this),
         status,
-        homeData,
+        // homeData,
       ];
 }

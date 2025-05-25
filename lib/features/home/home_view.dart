@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:playground_flutter/core/locale/string_translation.dart';
 import 'package:playground_flutter/features/home/cubit/home_cubit.dart';
 import 'package:playground_flutter/widgets/general_widgets/app_loading.dart';
-import 'package:tekio_menu/widgets/base_menu_builder.dart';
+// import 'package:tekio_menu/widgets/base_menu_builder.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -24,38 +24,39 @@ class HomeView extends StatelessWidget {
               return AppLoading();
             case HomeStatus.homeLoaded:
               return Scaffold(
-                appBar: AppBar(
-                  backgroundColor: Theme.of(context).primaryColor,
-                  title: Text('app_name'.translate),
-                ),
-                drawer: Drawer(
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    children: <Widget>[
-                      DrawerHeader(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        child: Text(
-                          'app_name'.translate,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
+                  appBar: AppBar(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    title: Text('app_name'.translate),
+                  ),
+                  drawer: Drawer(
+                    child: ListView(
+                      padding: EdgeInsets.zero,
+                      children: <Widget>[
+                        DrawerHeader(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          child: Text(
+                            'app_name'.translate,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                            ),
                           ),
                         ),
-                      ),
-                      ListTile(
-                        title: Text('settings'.translate),
-                        onTap: () => context.push('/settings'),
-                      ),
-                    ],
+                        ListTile(
+                          title: Text('settings'.translate),
+                          onTap: () => context.push('/settings'),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                body: TekioBaseMenuBuilder(
-                  baseMenuData: state.homeData!,
-                  navigateTo: (path) => context.push(path),
-                ),
-              );
+                  body: Placeholder()
+                  //  TekioBaseMenuBuilder(
+                  //   baseMenuData: state.homeData!,
+                  //   navigateTo: (path) => context.push(path),
+                  // ),
+                  );
           }
         },
       ),
