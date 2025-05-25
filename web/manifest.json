@@ -1,11 +1,11 @@
 {
-    "name": "Playground",
-    "short_name": "Playground",
+    "name": "Tekio",
+    "short_name": "Tekio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#FF0000",
     "theme_color": "#FF0000",
-    "description": "Just my flutter playground",
+    "description": "Just my tekio app playground",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

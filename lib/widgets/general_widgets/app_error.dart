@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/core/locale/string_translation.dart';
+import 'package:tekio_app/core/locale/string_translation.dart';
 
 class AppError extends StatelessWidget {
   final VoidCallback onPressed;

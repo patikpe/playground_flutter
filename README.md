@@ -1,3 +1,3 @@
-# playground_flutter
+# Tekio App
 
 A new Flutter project.

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:playground_flutter/core/locale/string_translation.dart';
-import 'package:playground_flutter/features/home/cubit/home_cubit.dart';
-import 'package:playground_flutter/widgets/general_widgets/app_loading.dart';
+import 'package:tekio_app/core/locale/string_translation.dart';
+import 'package:tekio_app/features/home/cubit/home_cubit.dart';
+import 'package:tekio_app/widgets/general_widgets/app_loading.dart';
 // import 'package:tekio_menu/widgets/base_menu_builder.dart';
 
 class HomeView extends StatelessWidget {

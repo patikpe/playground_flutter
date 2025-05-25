@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:playground_flutter/features/auth/view/auth_view.dart';
-import 'package:playground_flutter/features/auth/view/login_view.dart';
-import 'package:playground_flutter/features/auth/view/register_view.dart';
-import 'package:playground_flutter/features/home/home_view.dart';
-import 'package:playground_flutter/features/settings/settings_view.dart';
-import 'package:playground_flutter/widgets/general_widgets/screen_not_found.dart';
+import 'package:tekio_app/features/auth/view/auth_view.dart';
+import 'package:tekio_app/features/auth/view/login_view.dart';
+import 'package:tekio_app/features/auth/view/register_view.dart';
+import 'package:tekio_app/features/home/home_view.dart';
+import 'package:tekio_app/features/settings/settings_view.dart';
+import 'package:tekio_app/widgets/general_widgets/screen_not_found.dart';
 
 class AppRouter {
   static final router = GoRouter(

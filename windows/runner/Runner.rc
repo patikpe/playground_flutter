@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "FlutterPlayground" "\0"
-            VALUE "FileDescription", "Playground" "\0"
+            VALUE "CompanyName", "Tekio Dev" "\0"
+            VALUE "FileDescription", "Tekio" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "Playground" "\0"
-            VALUE "LegalCopyright", "Copyright ©️ 2022 FlutterPlayground. All rights reserved." "\0"
-            VALUE "OriginalFilename", "flutterplayground-dev.exe" "\0"
-            VALUE "ProductName", "Playground" "\0"
+            VALUE "InternalName", "Tekio" "\0"
+            VALUE "LegalCopyright", "Copyright ©️ 2022 TekioDev. All rights reserved." "\0"
+            VALUE "OriginalFilename", "tekioappplayground.exe" "\0"
+            VALUE "ProductName", "Tekio" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

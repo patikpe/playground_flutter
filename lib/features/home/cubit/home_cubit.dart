@@ -12,8 +12,8 @@ class HomeCubit extends Cubit<HomeState> {
       FirebaseFirestore.instance.collection('appHomeMenu');
 
   getHomeConfig() async {
-    DocumentSnapshot data =
-        await homeCollectionData.doc('eULnsqHE6Dj24cv0hHuj').get();
+    // DocumentSnapshot data =
+    //     await homeCollectionData.doc('eULnsqHE6Dj24cv0hHuj').get();
 
     // BaseMenuModel homeData =
     //     BaseMenuModel.fromJson(data.data() as Map<String, dynamic>);

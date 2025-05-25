@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:playground_flutter/core/database/local_database.dart';
+import 'package:tekio_app/core/database/local_database.dart';
 
 class AppLocale {
   static AppLocale? _instance;

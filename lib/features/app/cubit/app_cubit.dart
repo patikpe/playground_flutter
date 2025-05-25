@@ -3,9 +3,9 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/core/app/app_config.dart';
-import 'package:playground_flutter/core/locale/app_locale.dart';
-import 'package:playground_flutter/models/app_config/app_config_model.dart';
+import 'package:tekio_app/core/app/app_config.dart';
+import 'package:tekio_app/core/locale/app_locale.dart';
+import 'package:tekio_app/models/app_config/app_config_model.dart';
 
 part 'app_state.dart';
 

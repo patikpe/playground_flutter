@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
-import 'package:playground_flutter/core/locale/string_translation.dart';
-import 'package:playground_flutter/features/auth/cubit/auth_cubit.dart';
+import 'package:tekio_app/core/locale/string_translation.dart';
+import 'package:tekio_app/features/auth/cubit/auth_cubit.dart';
 
 class RegisterView extends StatelessWidget {
   RegisterView({super.key});
